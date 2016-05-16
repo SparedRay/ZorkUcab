@@ -14,6 +14,10 @@ public class Jugador extends Entidad {
         this(100, 10, 0);
     }
     
+    public boolean vivo() {
+        return this.hp > 0;
+    }
+    
     @Override
     public void mostrar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

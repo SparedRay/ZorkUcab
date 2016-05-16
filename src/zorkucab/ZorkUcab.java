@@ -14,6 +14,10 @@ public class ZorkUcab {
     public static void main(String[] args) {
         Juego j = new Juego();
         j.iniciar();
+        
+        do {
+            j.run();
+        } while(j.continuar());
     }
     
 }

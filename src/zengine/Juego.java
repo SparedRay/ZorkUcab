@@ -14,4 +14,12 @@ public class Juego {
     public void iniciar() {
         System.out.println("Partida iniciada");
     }
+    
+    public void run() {
+        System.out.println("Partida en curso");
+    }
+    
+    public boolean continuar() {
+        return jugador.vivo();
+    }
 }
