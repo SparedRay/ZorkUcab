@@ -14,3 +14,7 @@ hs_err_pid*
 # Archivos de proyecto
 *.sublime-project
 *.sublime-workspace
+
+# Carpetas de compilacion
+build/
+dist/
