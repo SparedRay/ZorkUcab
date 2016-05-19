@@ -3,20 +3,16 @@ package zorkucab;
 import zengine.*;
 
 public class NivelManager {
-    private Escenario nivel;
+    private Nivel nivel;
 
-    public NivelManager(Escenario nivel) {
-        this.nivel = nivel;
-    }
-
-    public NivelManager() {
-    }
-
-    public Escenario getNivel() {
+    public Nivel getNivel() {
         return this.nivel;
     }
 
-    public void setNivel(Escenario nivel) {
+    public void setNivel(Nivel nivel) {
         this.nivel = nivel;
+
+        nivel.iniciar();
+        nivel.mostrar();
     }
 }
