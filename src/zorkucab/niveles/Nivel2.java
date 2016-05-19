@@ -10,33 +10,25 @@ import zengine.*;
  *
  * @author SparedRay
  */
-public class Nivel1 extends Escenario {
+public class Nivel2 extends Escenario {
 
 	private NivelManager nivelManager;
     private Scanner ent = new Scanner(System.in);
     private ArrayList<Entidad> npc = new ArrayList<>();
 
-    public Nivel1(Jugador jugador, NivelManager nivelManager) {
+    public Nivel2(Jugador jugador, NivelManager nivelManager) {
         super(jugador);
         this.nivelManager = nivelManager;
     }
 
-    public Nivel1(Jugador jugador) {
-        super(jugador);
-    }
-
-    public void setNivelManager(NivelManager nivelManager) {
-    	this.nivelManager = nivelManager;
-    }
-
     @Override
     public void iniciar() {
-        npc.add(new Jugador(100, 20, 0));
+        npc.add(new Jugador(50, 0, 0));
     }
 
     @Override
     public void mostrar() {
-        System.out.println("Hola soy willie y soy un npc");
+        System.out.println("Hola soy Jose y soy otro npc");
         npc.get(0).mostrar();
     }
 
@@ -48,7 +40,7 @@ public class Nivel1 extends Escenario {
         if (salir == 'Y') {
             jugador.setHp(0);
         } else {
-        	nivelManager.setNivel(new Nivel2(jugador, nivelManager));
+        	System.out.println("Asi que no te quieres ir eh?");
         }
     }
 

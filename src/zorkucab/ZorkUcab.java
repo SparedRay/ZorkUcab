@@ -24,23 +24,27 @@ public class ZorkUcab {
     private static class Principal implements Juego {
 
         Jugador jugador = new Jugador();
-        Escenario nivel;
+        NivelManager nivel;
 
         @Override
         public void iniciar() {
-            nivel = new Nivel1(jugador);
-            nivel.iniciar();
-            nivel.mostrar();
+            nivel = new NivelManager();
+            Nivel1 level = new Nivel1(jugador);
+            level.setNivelManager(nivel);
+
+            nivel.setNivel(level);
+            nivel.getNivel().iniciar();
+            nivel.getNivel().mostrar();
         }
 
         @Override
         public void run() {
-            nivel.run();
+            nivel.getNivel().run();
         }
 
         @Override
         public boolean continuar() {
-            return jugador.vivo() && nivel.continuar();
+            return jugador.vivo() && nivel.getNivel().continuar();
         }
     }
 
