@@ -29,12 +29,7 @@ public class ZorkUcab {
         @Override
         public void iniciar() {
             nivel = new NivelManager();
-            Nivel1 level = new Nivel1(jugador);
-            level.setNivelManager(nivel);
-
-            nivel.setNivel(level);
-            nivel.getNivel().iniciar();
-            nivel.getNivel().mostrar();
+            nivel.setNivel(new Nivel1(jugador, nivel));
         }
 
         @Override
