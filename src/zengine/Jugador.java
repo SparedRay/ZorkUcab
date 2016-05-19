@@ -20,7 +20,10 @@ public class Jugador extends Entidad {
     
     @Override
     public void mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("STATS:");
+        System.out.println("hp: " + this.hp);
+        System.out.println("Ataque: " + this.ataque);
+        System.out.println("Defensa: " + this.defensa);
     }
     
 }
