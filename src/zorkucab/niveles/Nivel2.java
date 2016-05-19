@@ -3,6 +3,7 @@ package zorkucab.niveles;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import zorkucab.Nivel;
 import zorkucab.NivelManager;
 import zengine.*;
 
@@ -10,15 +11,12 @@ import zengine.*;
  *
  * @author SparedRay
  */
-public class Nivel2 extends Escenario {
-
-	private NivelManager nivelManager;
+public class Nivel2 extends Nivel {
     private Scanner ent = new Scanner(System.in);
     private ArrayList<Entidad> npc = new ArrayList<>();
 
     public Nivel2(Jugador jugador, NivelManager nivelManager) {
-        super(jugador);
-        this.nivelManager = nivelManager;
+        super(jugador, nivelManager);
     }
 
     @Override
