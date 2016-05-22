@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
+    private int seleccion;
     private String titulo;
     private String subtitulo;
     public ArrayList<Opcion<?>> opciones;
@@ -36,22 +37,25 @@ public class Menu {
     }
 
     public void run() {
-        int opcion;
         Scanner ent = new Scanner(System.in);
         do {
             this.limpiar();
             this.mostrar();
             System.out.print(this.subtitulo);
-            opcion = ent.nextInt();
+            seleccion = ent.nextInt();
 
-            if (opcion != 0) {
+            if (seleccion != 0) {
                 try {
-                    opciones.get(opcion - 1).accion();
+                    opciones.get(seleccion - 1).accion();
                 } catch (IndexOutOfBoundsException e) {
                     System.err.println("Opcion invalida");
                 }
             }
-        } while (opcion != 0);
+        } while (seleccion != 0);
+    }
+
+    public void salir() {
+        this.seleccion = 0;
     }
 
     public void limpiar() {
