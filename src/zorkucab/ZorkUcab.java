@@ -35,19 +35,17 @@ public class ZorkUcab {
             nivel = new NivelManager();
             menuPrincipal = new Menu("ZORK u.c.a.b.", "> ", new ArrayList<>());
 
-            menuPrincipal.opciones.add(new Opcion<Integer>("Iniciar juego", () -> {
+            menuPrincipal.opciones.add(new Opcion("Iniciar juego", () -> {
                 jugador = crearJugador();
                 nivel.setNivel(new Nivel1(jugador, nivel));
                 menuPrincipal.cerrar();
-                return 0;
             }));
-            menuPrincipal.opciones.add(new Opcion<Integer>("Continuar partida", () -> {
+            menuPrincipal.opciones.add(new Opcion("Continuar partida", () -> {
                 throw new UnsupportedOperationException("Aun no habilitado");
             }));
-            menuPrincipal.opciones.add(new Opcion<Integer>("Salir", () -> {
+            menuPrincipal.opciones.add(new Opcion("Salir", () -> {
                 jugador.setHp(0);
                 menuPrincipal.cerrar();
-                return 0;
             }));
 
             menuPrincipal.run();

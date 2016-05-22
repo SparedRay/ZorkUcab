@@ -30,24 +30,20 @@ public class Nivel2 extends Nivel {
 
     @Override
     public void mostrar() {
-        menu.opciones.add(new Opcion<Integer>("Respondes: Hola", () -> {
+        menu.opciones.add(new Opcion("Respondes: Hola", () -> {
             System.out.println("Espero que no te encontraras a Willie, este tipo es un pesao.");
-            return 0;
         }));
-        menu.opciones.add(new Opcion<Integer>("Examinas a \"Willie\"", () -> {
+        menu.opciones.add(new Opcion("Examinas a \"Willie\"", () -> {
             npc.get(0).mostrar();
-            return 0;
         }));
-        menu.opciones.add(new Opcion<Integer>("Regresas a la entrada", () -> {
+        menu.opciones.add(new Opcion("Regresas a la entrada", () -> {
             menu.cerrar();
             nivelManager.setNivel(new Nivel1(jugador, nivelManager));
-            return 0;
         }));
-        menu.opciones.add(new Opcion<Integer>("Te vas de la universidad", () -> {
+        menu.opciones.add(new Opcion("Te vas de la universidad", () -> {
             menu.cerrar();
             System.out.println("Asi que te quieres ir eh?");
             jugador.setHp(0);
-            return 0;
         }));
     }
 
