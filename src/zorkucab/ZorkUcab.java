@@ -36,6 +36,7 @@ public class ZorkUcab {
             menuPrincipal = new Menu("ZORK u.c.a.b.", "> ", new ArrayList<>());
 
             menuPrincipal.opciones.add(new Opcion<Integer>("Iniciar juego", () -> {
+                jugador = crearJugador();
                 nivel.setNivel(new Nivel1(jugador, nivel));
                 menuPrincipal.cerrar();
                 return 0;
@@ -60,6 +61,14 @@ public class ZorkUcab {
         @Override
         public boolean continuar() {
             return jugador.vivo() && nivel.getNivel().continuar();
+        }
+
+        public Jugador crearJugador() {
+            Scanner ent = new Scanner(System.in);
+            System.out.print("Nombre del jugador: ");
+            String nombre = ent.nextLine();
+
+            return new Jugador(nombre);
         }
     }
 

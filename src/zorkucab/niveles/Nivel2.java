@@ -25,7 +25,7 @@ public class Nivel2 extends Nivel {
 
     @Override
     public void iniciar() {
-        npc.add(new Jugador(50, 0, 0));
+        npc.add(new Jugador("Jose", 50, 0, 0));
     }
 
     @Override
