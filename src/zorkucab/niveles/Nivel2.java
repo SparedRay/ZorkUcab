@@ -3,9 +3,10 @@ package zorkucab.niveles;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import zengine.*;
+import zengine.menu.*;
 import zorkucab.Nivel;
 import zorkucab.NivelManager;
-import zengine.*;
 
 /**
  *
@@ -14,6 +15,9 @@ import zengine.*;
 public class Nivel2 extends Nivel {
     private Scanner ent = new Scanner(System.in);
     private ArrayList<Entidad> npc = new ArrayList<>();
+
+    String lore = "En tu camino parece no faltarte gente, rapidamente escuchas \"Hola soy Jose y soy otro npc\"";
+    Menu menu = new Menu(lore, "Tu > ", new ArrayList<>());
 
     public Nivel2(Jugador jugador, NivelManager nivelManager) {
         super(jugador, nivelManager);
@@ -26,20 +30,30 @@ public class Nivel2 extends Nivel {
 
     @Override
     public void mostrar() {
-        System.out.println("Hola soy Jose y soy otro npc");
-        npc.get(0).mostrar();
+        menu.opciones.add(new Opcion<Integer>("Respondes: Hola", () -> {
+            System.out.println("Espero que no te encontraras a Willie, este tipo es un pesao.");
+            return 0;
+        }));
+        menu.opciones.add(new Opcion<Integer>("Examinas a \"Willie\"", () -> {
+            npc.get(0).mostrar();
+            return 0;
+        }));
+        menu.opciones.add(new Opcion<Integer>("Regresas a la entrada", () -> {
+            menu.cerrar();
+            nivelManager.setNivel(new Nivel1(jugador, nivelManager));
+            return 0;
+        }));
+        menu.opciones.add(new Opcion<Integer>("Te vas de la universidad", () -> {
+            menu.cerrar();
+            System.out.println("Asi que te quieres ir eh?");
+            jugador.setHp(0);
+            return 0;
+        }));
     }
 
     @Override
     public void run() {
-        System.out.print("Salir? (Y/n) ");
-        char salir = ent.next().charAt(0);
-
-        if (salir == 'Y') {
-            jugador.setHp(0);
-        } else {
-        	System.out.println("Asi que no te quieres ir eh?");
-        }
+        menu.run();
     }
 
     @Override

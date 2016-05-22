@@ -1,6 +1,9 @@
 package zorkucab;
 
+import java.util.*;
+
 import zengine.*;
+import zengine.menu.*;
 import zorkucab.niveles.*;
 
 /**
@@ -16,20 +19,37 @@ public class ZorkUcab {
         Juego j = new Principal();
         j.iniciar();
 
-        do {
+        while (j.continuar()) {
             j.run();
-        } while (j.continuar());
+        }
     }
 
     private static class Principal implements Juego {
 
         Jugador jugador = new Jugador();
         NivelManager nivel;
+        Menu menuPrincipal;
 
         @Override
         public void iniciar() {
             nivel = new NivelManager();
-            nivel.setNivel(new Nivel1(jugador, nivel));
+            menuPrincipal = new Menu("ZORK u.c.a.b.", "> ", new ArrayList<>());
+
+            menuPrincipal.opciones.add(new Opcion<Integer>("Iniciar juego", () -> {
+                nivel.setNivel(new Nivel1(jugador, nivel));
+                menuPrincipal.cerrar();
+                return 0;
+            }));
+            menuPrincipal.opciones.add(new Opcion<Integer>("Continuar partida", () -> {
+                throw new UnsupportedOperationException("Aun no habilitado");
+            }));
+            menuPrincipal.opciones.add(new Opcion<Integer>("Salir", () -> {
+                jugador.setHp(0);
+                menuPrincipal.cerrar();
+                return 0;
+            }));
+
+            menuPrincipal.run();
         }
 
         @Override
