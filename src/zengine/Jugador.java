@@ -31,10 +31,13 @@ public class Jugador extends Entidad {
     
     @Override
     public void mostrar() {
-        System.out.println(nombre + " STATS:");
-        System.out.println("hp: " + this.hp);
-        System.out.println("Ataque: " + this.ataque);
-        System.out.println("Defensa: " + this.defensa);
+        System.out.print("\n|------------------------------");
+        System.out.print("\n|(ง ͡ʘ ͜ʖ ͡ʘ)ง |   " + nombre);
+        System.out.print("\n|---------------");
+        System.out.print("\n| hp: " + this.hp);
+        System.out.print("\n| Ataque: " + this.ataque);
+        System.out.print("\n| Defensa: " + this.defensa);
+        System.out.print("\n|------------------------------\n");
     }
     
 }
