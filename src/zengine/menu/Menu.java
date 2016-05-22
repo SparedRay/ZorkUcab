@@ -39,7 +39,7 @@ public class Menu {
     public void run() {
         Scanner ent = new Scanner(System.in);
         do {
-            this.limpiar();
+            //this.limpiar();
             this.mostrar();
             System.out.print(this.subtitulo);
             seleccion = ent.nextInt();
@@ -54,7 +54,7 @@ public class Menu {
         } while (seleccion != 0);
     }
 
-    public void salir() {
+    public void cerrar() {
         this.seleccion = 0;
     }
 
