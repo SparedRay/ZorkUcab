@@ -1,32 +1,21 @@
 package zengine.menu;
 
-import java.util.concurrent.Callable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
- * @author fundafe
- * @param <T>
+ * @author Martinor
  */
-public class Opcion<T> implements Option<T> {
+public class Opcion implements Runnable {
 
     public String nombre;
-    public Callable<T> accion;
+    public Runnable accion;
 
-    public Opcion(String nombre, Callable<T> accion) {
+    public Opcion(String nombre, Runnable accion) {
         this.nombre = nombre;
         this.accion = accion;
     }
 
     @Override
-    public T accion() {
-        try {
-            return this.accion.call();
-        } catch (Exception ex) {
-            Logger.getLogger(Opcion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return (T) this.accion;
+    public void run() {
+        this.accion.run();
     }
 }

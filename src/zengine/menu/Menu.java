@@ -12,15 +12,15 @@ public class Menu {
     private int seleccion;
     private String titulo;
     private String subtitulo;
-    public ArrayList<Opcion<?>> opciones;
+    public ArrayList<Opcion> opciones;
 
-    public Menu(String titulo, String subtitulo, ArrayList<Opcion<?>> opciones) {
+    public Menu(String titulo, String subtitulo, ArrayList<Opcion> opciones) {
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.opciones = opciones;
     }
 
-    public Menu(String titulo, ArrayList<Opcion<?>> opciones) {
+    public Menu(String titulo, ArrayList<Opcion> opciones) {
         this(titulo, "\nOpcion: (0 para salir) ", opciones);
     }
 
@@ -31,7 +31,7 @@ public class Menu {
     public void mostrar() {
         System.out.println(this.titulo);
         for (int i = 1; i <= opciones.size(); i++) {
-            Opcion<?> o = (Opcion<?>) opciones.get(i - 1);
+            Opcion o = opciones.get(i - 1);
             System.out.println(i + "> " + o.nombre);
         }
     }
@@ -46,7 +46,7 @@ public class Menu {
 
             if (seleccion != 0) {
                 try {
-                    opciones.get(seleccion - 1).accion();
+                    opciones.get(seleccion - 1).run();
                 } catch (IndexOutOfBoundsException e) {
                     System.err.println("Opcion invalida");
                 }
