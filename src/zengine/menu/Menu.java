@@ -50,12 +50,21 @@ public class Menu {
                 } catch (IndexOutOfBoundsException e) {
                     System.err.println("Opcion invalida");
                 }
+                this.pausarMenu();
             }
         } while (seleccion != 0);
     }
 
     public void cerrar() {
         this.seleccion = 0;
+    }
+
+    public void pausarMenu() {
+        System.out.print("Presione ENTER para continuar...");
+
+        try { 
+            System.in.read(); 
+        } catch(Exception e) {}
     }
 
     public void limpiar() {
